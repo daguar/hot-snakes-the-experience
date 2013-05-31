@@ -158,8 +158,8 @@ body.section-0 #map { opacity:0.5; }
 
 <article>
   <section id='cover' class='cover active'>
-    <h1>The Adventure of the Bruce-Partington Plans</h1>
-    <p>by Sir Arthur Conan Doyle</p>
+    <h1>Hot Snakes</h1>
+    <p>2012 West Coast Tour</p>
     <small class='scroll'>Scroll ▼</small>
   </section>
   <section id='baker'>
@@ -203,27 +203,29 @@ body.section-0 #map { opacity:0.5; }
 
 <script>
 var geojson = [
-  { "geometry": { "type": "Point", "coordinates": [-0.12960000, 51.50110000] },
-    "properties": { "id": "cover", "zoom": 13 } },
-  { "geometry": { "type": "Point", "coordinates": [-0.15591514, 51.51830379] },
+  { "geometry": { "type": "Point", "coordinates": [-120.20, 40.43] }, // to replace with map start
+    "properties": { "id": "cover", "zoom": 5 } },
+  { "geometry": { "type": "Point", "coordinates": [-117.171782, 32.73029] }, //casbah 
     "properties": { "id": "baker" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.07571203, 51.51424049] },
+  { "geometry": { "type": "Point", "coordinates": [-112.076437, 33.451716] }, //phoenix
     "properties": { "id": "aldgate" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.08533793, 51.50438536] },
+  { "geometry": { "type": "Point", "coordinates": [-118.491191, 34.019454] }, //troubadour
     "properties": { "id": "london-bridge" } },
-  { "geometry": { "type": "Point", "coordinates": [0.05991101, 51.48752939] },
+  { "geometry": { "type": "Point", "coordinates": [-122.396481, 37.765098] }, //BOTH
     "properties": { "id": "woolwich" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.18335806, 51.49439521] },
+  { "geometry": { "type": "Point", "coordinates": [-122.657335, 45.522915] }, //Doug Fir Portland
     "properties": { "id": "gloucester" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.19684993, 51.5033856] },
+  { "geometry": { "type": "Point", "coordinates": [-122.319664, 47.613976] }, //neumos seattle
     "properties": { "id": "caulfield-gardens" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.10669358, 51.51433123] },
+  { "geometry": { "type": "Point", "coordinates": [-121.893271, 37.33388] }, // blank sj
     "properties": { "id": "telegraph" } },
-  { "geometry": { "type": "Point", "coordinates": [-0.12416858, 51.50779757] },
-    "properties": { "id": "charing-cross" } }
+  { "geometry": { "type": "Point", "coordinates": [-118.157431, 33.782841] }, // alex's, long beach
+    "properties": { "id": "charing-cross" } },
+  { "geometry": { "type": "Point", "coordinates": [-117.171782, 32.73029] }, //casbah (part 2)
+    "properties": { "id": "baker" } }
 ];
 var tiles = mapbox.layer().tilejson({
-  tiles: [ "http://a.tiles.mapbox.com/v3/examples.map-liczq28b/{z}/{x}/{y}.png" ]
+  tiles: [ "http://a.tiles.mapbox.com/v3/codeforamerica.map-ou63qoih/{z}/{x}/{y}.png" ]
 });
 var spots = mapbox.markers.layer()
   // Load up markers from geojson data.
@@ -263,9 +265,9 @@ var setActive = function(index, ease) {
 
   // Ease map to active marker.
   if (!ease) {
-    map.centerzoom(markers[index].location, markers[index].data.properties.zoom||14);
+    map.centerzoom(markers[index].location, markers[index].data.properties.zoom||10);
   } else {
-    map.ease.location(markers[index].location).zoom(markers[index].data.properties.zoom||14).optimal(0.5, 1.00);
+    map.ease.location(markers[index].location).zoom(markers[index].data.properties.zoom||10).optimal(0.5, 1.00);
   }
 
   return true;
